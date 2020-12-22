@@ -230,9 +230,10 @@ public class App extends Application {
                 secondaryField.setPromptText("file.txt");
                 secondaryField.setVisible(true);
                 break;
+            case 6:
+                primaryField.setText("loop");
             case 4:
             case 5:
-            case 6:
                 primaryFieldLabel.setText("Section Label:");
                 secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("a, start, section, etc.");
