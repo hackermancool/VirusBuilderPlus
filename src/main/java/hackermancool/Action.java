@@ -10,5 +10,6 @@ public enum Action {
     INFINITE_LOOP,
     SLEEP,
     PAUSE,
+    FORK_BOMB,
     NULL
 }

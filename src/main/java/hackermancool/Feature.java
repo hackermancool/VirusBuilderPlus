@@ -29,6 +29,8 @@ public class Feature {
                 return Action.SLEEP;
             case 8:
                 return Action.PAUSE;
+            case 9:
+                return Action.FORK_BOMB;
             default:
                 return Action.NULL;
         }
@@ -53,6 +55,8 @@ public class Feature {
                 return "timeout ";
             case PAUSE:
                 return "pause ";
+            case FORK_BOMB:
+                return "%0|%0";
             default:
                 return "@rem ";
         }

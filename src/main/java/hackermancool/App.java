@@ -75,7 +75,8 @@ public class App extends Application {
                 "Jump to Section",
                 "Infinite Loop",
                 "Sleep",
-                "Pause"
+                "Pause",
+                "Fork Bomb"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -212,7 +213,16 @@ public class App extends Application {
                 break;
             case 8:
                 primaryFieldLabel.setVisible(false);
+                secondaryFieldLabel.setVisible(false);
+                primaryField.setText("");
+                primaryField.setVisible(false);
+                secondaryField.setText("");
                 secondaryField.setVisible(false);
+                break;
+            case 9:
+                primaryFieldLabel.setText("Pauses/sleeps in virus");
+                secondaryFieldLabel.setText("will disable fork bomb.");
+                secondaryFieldLabel.setVisible(true);
                 primaryField.setText("");
                 primaryField.setVisible(false);
                 secondaryField.setText("");
