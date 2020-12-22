@@ -2,11 +2,13 @@ package hackermancool;
 
 public class Feature {
     private Action action;
-    private String[] args;
+    private String primaryField;
+    private String secondaryField;
 
-    Feature(Action action, String[] args) {
+    Feature(Action action, String primaryField, String secondaryField) {
         this.action = action;
-        this.args = args;
+        this.primaryField = primaryField;
+        this.secondaryField = secondaryField;
     }
 
     public static Action indexToEnum(int index) {
@@ -70,11 +72,19 @@ public class Feature {
         this.action = action;
     }
 
-    public String[] getArgs() {
-        return args;
+    public String getPrimaryField() {
+        return primaryField;
     }
 
-    public void setArgs(String[] args) {
-        this.args = args;
+    public void setPrimaryField(String primaryField) {
+        this.primaryField = primaryField;
+    }
+
+    public String getSecondaryField() {
+        return secondaryField;
+    }
+
+    public void setSecondaryField(String secondaryField) {
+        this.secondaryField = secondaryField;
     }
 }

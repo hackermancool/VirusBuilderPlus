@@ -3,8 +3,10 @@ package hackermancool;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,12 +19,18 @@ import java.util.ArrayList;
 
 public class App extends Application {
     Stage window;
+
     Scene titleScene, builderScene;
+
     ComboBox<String> featuresComboBox;
+
     TextField primaryField, secondaryField;
+
     Label primaryFieldLabel, secondaryFieldLabel;
 
     ArrayList<Feature> features;
+
+    TableView featuresTable;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -96,6 +104,23 @@ public class App extends Application {
         VBox builderFieldLayout = new VBox(10);
         builderFieldLayout.getChildren().addAll(features, primary, secondary);
 
+        featuresTable = new TableView<>();
+        featuresTable.setMinWidth(350);
+
+        TableColumn<Feature, String> actionColumn = new TableColumn<>("Feature");
+        actionColumn.setCellValueFactory(new PropertyValueFactory<>("action"));
+        actionColumn.setMinWidth(125);
+
+        TableColumn<Feature, String> primaryFieldColumn = new TableColumn<>("Primary Field");
+        primaryFieldColumn.setCellValueFactory(new PropertyValueFactory<>("primaryField"));
+        primaryFieldColumn.setMinWidth(100);
+
+        TableColumn<Feature, String> secondaryFieldColumn = new TableColumn<>("Secondary Field");
+        secondaryFieldColumn.setCellValueFactory(new PropertyValueFactory<>("secondaryField"));
+        secondaryFieldColumn.setMinWidth(100);
+
+        featuresTable.getColumns().addAll(actionColumn, primaryFieldColumn, secondaryFieldColumn);
+
         Button addButton = new Button("Add Feature");
         addButton.setOnAction(e -> addFeature());
         TextField filenameField = new TextField();
@@ -104,15 +129,18 @@ public class App extends Application {
         buildButton.setOnAction(e -> buildVirus(filenameField.getText()));
 
         HBox builderBuildLayout = new HBox(10);
+        builderBuildLayout.setPadding(new Insets(10, 0, 0, 0));
         builderBuildLayout.getChildren().addAll(addButton, filenameField, buildButton);
+        builderBuildLayout.setAlignment(Pos.CENTER);
 
         BorderPane builderLayout = new BorderPane();
         builderLayout.setPadding(new Insets(0, 20, 20, 20));
         builderLayout.setTop(builderLabel);
-        builderLayout.setCenter(builderFieldLayout);
+        builderLayout.setLeft(builderFieldLayout);
+        builderLayout.setRight(featuresTable);
         builderLayout.setBottom(builderBuildLayout);
 
-        builderScene = new Scene(builderLayout);
+        builderScene = new Scene(builderLayout, 700, 300);
         featureChanged();
 
         window.setScene(titleScene);
@@ -125,11 +153,12 @@ public class App extends Application {
         String loopLabel = "";
 
         for(Feature feature : features) {
+            String[] args = {feature.getPrimaryField(), feature.getSecondaryField()};
             virus.append(Feature.actionToCommand(feature.getAction()));
-            virus.append(String.join(" ", feature.getArgs()));
+            virus.append(String.join(" ", args));
             if(feature.getAction() == Action.INFINITE_LOOP) {
                 loopExists = true;
-                loopLabel = feature.getArgs()[0];
+                loopLabel = feature.getPrimaryField();
             } else if(feature.getAction() == Action.SLEEP
                     || feature.getAction() == Action.PAUSE)
                 virus.append(">nul");
@@ -235,11 +264,10 @@ public class App extends Application {
         int index = featuresComboBox.getSelectionModel().getSelectedIndex();
         Action action = Feature.indexToEnum(index);
 
-        String[] args = new String[2];
-        args[0] = primaryField.getText();
-        args[1] = secondaryField.getText();
+        Feature newFeature = new Feature(action, primaryField.getText(), secondaryField.getText());
 
-        features.add(new Feature(action, args));
+        features.add(newFeature);
+        featuresTable.getItems().add(newFeature);
 
         System.out.println("Added feature: "
                 + featuresComboBox.getSelectionModel().getSelectedItem());
