@@ -8,5 +8,7 @@ public enum Action {
     CREATE_SECTION,
     JUMP_TO_SECTION,
     INFINITE_LOOP,
+    SLEEP,
+    PAUSE,
     NULL
 }

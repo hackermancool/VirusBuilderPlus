@@ -25,6 +25,10 @@ public class Feature {
                 return Action.JUMP_TO_SECTION;
             case 6:
                 return Action.INFINITE_LOOP;
+            case 7:
+                return Action.SLEEP;
+            case 8:
+                return Action.PAUSE;
             default:
                 return Action.NULL;
         }
@@ -45,6 +49,10 @@ public class Feature {
                 return ":";
             case JUMP_TO_SECTION:
                 return "goto ";
+            case SLEEP:
+                return "timeout ";
+            case PAUSE:
+                return "pause ";
             default:
                 return "@rem ";
         }

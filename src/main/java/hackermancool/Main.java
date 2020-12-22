@@ -13,7 +13,6 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -74,7 +73,9 @@ public class Main extends Application {
                 "Open",
                 "Create Section",
                 "Jump to Section",
-                "Infinite Loop"
+                "Infinite Loop",
+                "Sleep",
+                "Pause"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -128,7 +129,9 @@ public class Main extends Application {
             if(feature.getAction() == Action.INFINITE_LOOP) {
                 loopExists = true;
                 loopLabel = feature.getArgs()[0];
-            }
+            } else if(feature.getAction() == Action.SLEEP
+                    || feature.getAction() == Action.PAUSE)
+                virus.append(">nul");
             virus.append("\n");
         }
 
@@ -155,6 +158,11 @@ public class Main extends Application {
 
     private void featureChanged() {
         int feature = featuresComboBox.getSelectionModel().getSelectedIndex();
+
+        if(!primaryField.isVisible() || !primaryFieldLabel.isVisible()) {
+            primaryField.setVisible(true);
+            primaryFieldLabel.setVisible(true);
+        }
 
         switch(feature) {
             case 0:
@@ -192,6 +200,21 @@ public class Main extends Application {
                 primaryFieldLabel.setText("Section Label:");
                 secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("a, start, section, etc.");
+                secondaryField.setText("");
+                secondaryField.setVisible(false);
+                break;
+            case 7:
+                primaryFieldLabel.setText("Sleep Duration (Seconds):");
+                secondaryFieldLabel.setVisible(false);
+                primaryField.setPromptText("5");
+                secondaryField.setText("");
+                secondaryField.setVisible(false);
+                break;
+            case 8:
+                primaryFieldLabel.setVisible(false);
+                secondaryField.setVisible(false);
+                primaryField.setText("");
+                primaryField.setVisible(false);
                 secondaryField.setText("");
                 secondaryField.setVisible(false);
                 break;
