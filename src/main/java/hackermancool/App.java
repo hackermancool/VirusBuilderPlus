@@ -58,7 +58,7 @@ public class App extends Application {
         titleLayout.setLeft(titleTextLayout);
         titleLayout.setTop(mainMenu);
 
-        titleScene = new Scene(titleLayout, 640, 480);
+        titleScene = new Scene(titleLayout, 500, 150);
 
         // Builder scene
         Label builderLabel = new Label("Builder");
