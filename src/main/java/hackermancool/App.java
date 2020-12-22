@@ -84,7 +84,10 @@ public class App extends Application {
                 "Infinite Loop",
                 "Sleep",
                 "Pause",
-                "Fork Bomb"
+                "Fork Bomb",
+                "Shutdown",
+                "Restart",
+                "Hibernate"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -155,6 +158,9 @@ public class App extends Application {
         for(Feature feature : features) {
             String[] args = {feature.getPrimaryField(), feature.getSecondaryField()};
             virus.append(Feature.actionToCommand(feature.getAction()));
+            if(feature.getAction() == Action.SHUTDOWN
+            || feature.getAction() == Action.RESTART)
+                virus.append("/t ");
             virus.append(String.join(" ", args));
             if(feature.getAction() == Action.INFINITE_LOOP) {
                 loopExists = true;
@@ -241,6 +247,7 @@ public class App extends Application {
                 secondaryField.setVisible(false);
                 break;
             case 8:
+            case 12:
                 primaryFieldLabel.setVisible(false);
                 secondaryFieldLabel.setVisible(false);
                 primaryField.setText("");
@@ -254,6 +261,14 @@ public class App extends Application {
                 secondaryFieldLabel.setVisible(true);
                 primaryField.setText("");
                 primaryField.setVisible(false);
+                secondaryField.setText("");
+                secondaryField.setVisible(false);
+                break;
+            case 10:
+            case 11:
+                primaryFieldLabel.setText("Time Delay:");
+                secondaryFieldLabel.setVisible(false);
+                primaryField.setPromptText("60");
                 secondaryField.setText("");
                 secondaryField.setVisible(false);
                 break;

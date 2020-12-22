@@ -11,5 +11,8 @@ public enum Action {
     SLEEP,
     PAUSE,
     FORK_BOMB,
+    SHUTDOWN,
+    RESTART,
+    HIBERNATE,
     NULL
 }

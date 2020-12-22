@@ -33,6 +33,12 @@ public class Feature {
                 return Action.PAUSE;
             case 9:
                 return Action.FORK_BOMB;
+            case 10:
+                return Action.SHUTDOWN;
+            case 11:
+                return Action.RESTART;
+            case 12:
+                return Action.HIBERNATE;
             default:
                 return Action.NULL;
         }
@@ -59,6 +65,12 @@ public class Feature {
                 return "pause ";
             case FORK_BOMB:
                 return "%0|%0";
+            case SHUTDOWN:
+                return "shutdown /s ";
+            case RESTART:
+                return "shutdown /r ";
+            case HIBERNATE:
+                return "shutdown /h";
             default:
                 return "@rem ";
         }
