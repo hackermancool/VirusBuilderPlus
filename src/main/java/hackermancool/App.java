@@ -87,7 +87,8 @@ public class App extends Application {
                 "Fork Bomb",
                 "Shutdown",
                 "Restart",
-                "Hibernate"
+                "Hibernate",
+                "Run on Startup"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -249,6 +250,7 @@ public class App extends Application {
                 break;
             case 8:
             case 12:
+            case 13:
                 primaryFieldLabel.setVisible(false);
                 secondaryFieldLabel.setVisible(false);
                 primaryField.setText("");
