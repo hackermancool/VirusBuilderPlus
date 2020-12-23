@@ -39,6 +39,10 @@ public class Feature {
                 return Action.RESTART;
             case 12:
                 return Action.HIBERNATE;
+            case 13:
+                return Action.RUN_ON_STARTUP;
+            case 14:
+                return Action.CLEAR_SCREEN;
             default:
                 return Action.NULL;
         }
@@ -71,6 +75,10 @@ public class Feature {
                 return "shutdown /r ";
             case HIBERNATE:
                 return "shutdown /h";
+            case RUN_ON_STARTUP:
+                return "copy %0 \"%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\" \ncopy %0 \"%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\"";
+            case CLEAR_SCREEN:
+                return "cls";
             default:
                 return "@rem ";
         }

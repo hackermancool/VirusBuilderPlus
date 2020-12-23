@@ -14,5 +14,7 @@ public enum Action {
     SHUTDOWN,
     RESTART,
     HIBERNATE,
+    RUN_ON_STARTUP,
+    CLEAR_SCREEN,
     NULL
 }

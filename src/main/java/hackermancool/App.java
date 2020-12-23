@@ -88,7 +88,8 @@ public class App extends Application {
                 "Shutdown",
                 "Restart",
                 "Hibernate",
-                "Run on Startup"
+                "Run on Startup",
+                "Clear Screen"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -201,6 +202,9 @@ public class App extends Application {
             primaryFieldLabel.setVisible(true);
         }
 
+        primaryField.setText("");
+        secondaryField.setText("");
+
         switch(feature) {
             case 0:
                 primaryFieldLabel.setText("Title:");
@@ -227,7 +231,7 @@ public class App extends Application {
                 primaryFieldLabel.setText("Target:");
                 secondaryFieldLabel.setText("Arguments:");
                 secondaryFieldLabel.setVisible(true);
-                primaryField.setPromptText("notepad");
+                primaryField.setPromptText("notepad, https://www.google.com/");
                 secondaryField.setPromptText("file.txt");
                 secondaryField.setVisible(true);
                 break;
@@ -251,6 +255,7 @@ public class App extends Application {
             case 8:
             case 12:
             case 13:
+            case 14:
                 primaryFieldLabel.setVisible(false);
                 secondaryFieldLabel.setVisible(false);
                 primaryField.setText("");
@@ -286,6 +291,9 @@ public class App extends Application {
 
         features.add(newFeature);
         featuresTable.getItems().add(newFeature);
+
+        primaryField.setText("");
+        secondaryField.setText("");
 
         System.out.println("Added feature: "
                 + featuresComboBox.getSelectionModel().getSelectedItem());
