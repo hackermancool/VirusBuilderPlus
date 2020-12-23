@@ -61,15 +61,16 @@ public class App extends Application {
         VBox titleTextLayout = new VBox(5);
         titleTextLayout.getChildren().addAll(titleLabel, subtitleLabel);
         titleTextLayout.setPadding(new Insets(5, 5, 5, 5));
+        titleTextLayout.setAlignment(Pos.CENTER);
 
         BorderPane titleLayout = new BorderPane();
-        titleLayout.setLeft(titleTextLayout);
+        titleLayout.setCenter(titleTextLayout);
         titleLayout.setTop(mainMenu);
 
-        titleScene = new Scene(titleLayout, 500, 150);
+        titleScene = new Scene(titleLayout, 600, 200);
 
         // Builder scene
-        Label builderLabel = new Label("Builder");
+        Label builderLabel = new Label("VirusBuilder Plus");
         builderLabel.setStyle("-fx-font: 64 arial;");
 
         Label featureLabel = new Label("Feature:");
