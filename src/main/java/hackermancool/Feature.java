@@ -43,6 +43,8 @@ public class Feature {
                 return Action.RUN_ON_STARTUP;
             case 14:
                 return Action.CLEAR_SCREEN;
+            case 15:
+                return Action.RUN_LINE;
             default:
                 return Action.NULL;
         }
@@ -79,6 +81,8 @@ public class Feature {
                 return "copy %0 \"%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\" \ncopy %0 \"%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\"";
             case CLEAR_SCREEN:
                 return "cls";
+            case RUN_LINE:
+                return "";
             default:
                 return "@rem ";
         }

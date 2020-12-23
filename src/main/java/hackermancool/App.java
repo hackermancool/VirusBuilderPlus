@@ -89,7 +89,8 @@ public class App extends Application {
                 "Restart",
                 "Hibernate",
                 "Run on Startup",
-                "Clear Screen"
+                "Clear Screen",
+                "Run Line of Code"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -277,6 +278,13 @@ public class App extends Application {
                 primaryFieldLabel.setText("Time Delay:");
                 secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("60");
+                secondaryField.setText("");
+                secondaryField.setVisible(false);
+                break;
+            case 15:
+                primaryFieldLabel.setText("Code:");
+                secondaryFieldLabel.setVisible(false);
+                primaryField.setPromptText("set /a r=%RANDOM%");
                 secondaryField.setText("");
                 secondaryField.setVisible(false);
                 break;

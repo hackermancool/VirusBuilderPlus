@@ -16,5 +16,6 @@ public enum Action {
     HIBERNATE,
     RUN_ON_STARTUP,
     CLEAR_SCREEN,
+    RUN_LINE,
     NULL
 }
