@@ -168,8 +168,7 @@ public class App extends Application {
             if(feature.getAction() == Action.INFINITE_LOOP) {
                 loopExists = true;
                 loopLabel = feature.getPrimaryField();
-            } else if(feature.getAction() == Action.SLEEP
-                    || feature.getAction() == Action.PAUSE)
+            } else if(feature.getAction() == Action.SLEEP)
                 virus.append(">nul");
             virus.append("\n");
         }
@@ -205,28 +204,21 @@ public class App extends Application {
 
         primaryField.setText("");
         secondaryField.setText("");
+        secondaryField.setVisible(false);
+        secondaryFieldLabel.setVisible(false);
 
         switch(feature) {
             case 0:
                 primaryFieldLabel.setText("Title:");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("Virus Title");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 1:
                 primaryFieldLabel.setText("Colour (CMD Format):");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("0a");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 2:
                 primaryFieldLabel.setText("Text:");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("Hello, World!");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 3:
                 primaryFieldLabel.setText("Target:");
@@ -241,52 +233,33 @@ public class App extends Application {
             case 4:
             case 5:
                 primaryFieldLabel.setText("Section Label:");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("a, start, section, etc.");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 7:
                 primaryFieldLabel.setText("Sleep Duration (Seconds):");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("5");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 8:
             case 12:
             case 13:
             case 14:
                 primaryFieldLabel.setVisible(false);
-                secondaryFieldLabel.setVisible(false);
-                primaryField.setText("");
                 primaryField.setVisible(false);
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 9:
                 primaryFieldLabel.setText("Pauses/sleeps in virus");
                 secondaryFieldLabel.setText("will disable fork bomb.");
                 secondaryFieldLabel.setVisible(true);
-                primaryField.setText("");
                 primaryField.setVisible(false);
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 10:
             case 11:
                 primaryFieldLabel.setText("Time Delay:");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("60");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
             case 15:
                 primaryFieldLabel.setText("Code:");
-                secondaryFieldLabel.setVisible(false);
                 primaryField.setPromptText("set /a r=%RANDOM%");
-                secondaryField.setText("");
-                secondaryField.setVisible(false);
                 break;
         }
     }

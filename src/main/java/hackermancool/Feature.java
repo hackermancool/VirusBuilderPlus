@@ -68,7 +68,7 @@ public class Feature {
             case SLEEP:
                 return "timeout ";
             case PAUSE:
-                return "pause ";
+                return "pause >nul";
             case FORK_BOMB:
                 return "%0|%0";
             case SHUTDOWN:
