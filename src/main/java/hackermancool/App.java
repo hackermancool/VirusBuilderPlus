@@ -155,7 +155,7 @@ public class App extends Application {
     }
 
     private void buildVirus(String filename) {
-        StringBuilder virus = new StringBuilder("@echo off\ncls\n");
+        StringBuilder virus = new StringBuilder("@echo off\r\ncls\r\n");
         boolean loopExists = false;
         String loopLabel = "";
 
@@ -171,13 +171,13 @@ public class App extends Application {
                 loopLabel = feature.getPrimaryField();
             } else if(feature.getAction() == Action.SLEEP)
                 virus.append(">nul");
-            virus.append("\n");
+            virus.append("\r\n");
         }
 
         if(loopExists) {
             virus.append("goto ");
             virus.append(loopLabel);
-            virus.append("\n");
+            virus.append("\r\n");
         }
 
         System.out.println("Virus Built, Contents:");

