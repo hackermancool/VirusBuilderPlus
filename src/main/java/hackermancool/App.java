@@ -131,7 +131,7 @@ public class App extends Application {
         Button addButton = new Button("Add Feature");
         addButton.setOnAction(e -> addFeature());
         TextField filenameField = new TextField();
-        filenameField.setPromptText("virus.bat");
+        filenameField.setText("virus.bat");
         Button buildButton = new Button("Build Virus");
         buildButton.setOnAction(e -> buildVirus(filenameField.getText()));
 
