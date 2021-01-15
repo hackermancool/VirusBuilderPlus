@@ -91,7 +91,8 @@ public class App extends Application {
                 "Hibernate",
                 "Run on Startup",
                 "Clear Screen",
-                "Run Line of Code"
+                "Run Line of Code",
+                "Undeletable Folder Creator"
         );
         featuresComboBox.setOnAction(e -> featureChanged());
         featuresComboBox.getSelectionModel().select(0);
@@ -165,12 +166,23 @@ public class App extends Application {
             if(feature.getAction() == Action.SHUTDOWN
             || feature.getAction() == Action.RESTART)
                 virus.append("/t ");
-            virus.append(String.join(" ", args));
-            if(feature.getAction() == Action.INFINITE_LOOP) {
+            else if(feature.getAction() == Action.INFINITE_LOOP) {
                 loopExists = true;
                 loopLabel = feature.getPrimaryField();
             } else if(feature.getAction() == Action.SLEEP)
                 virus.append(">nul");
+            else if(feature.getAction() == Action.FOLDER_MACHINE) {
+                virus.append(args[0]);
+                virus.append("\\");
+                virus.append(args[1]);
+                virus.append("...");
+            }
+            if(feature.getAction() != Action.FOLDER_MACHINE && args[0] != "")
+                virus.append(args[0]);
+            if(feature.getAction() != Action.FOLDER_MACHINE && args[1] != "") {
+                virus.append(" ");
+                virus.append(args[1]);
+            }
             virus.append("\r\n");
         }
 
@@ -262,6 +274,13 @@ public class App extends Application {
                 primaryFieldLabel.setText("Code:");
                 primaryField.setPromptText("set /a r=%RANDOM%");
                 break;
+            case 16:
+                primaryFieldLabel.setText("Path to place folders:");
+                secondaryFieldLabel.setText("Folder prefix:");
+                secondaryFieldLabel.setVisible(true);
+                primaryField.setPromptText("C:\\%HomePath%\\Desktop");
+                secondaryField.setPromptText("Undeletable Folder");
+                secondaryField.setVisible(true);
         }
     }
 

